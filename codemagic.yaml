@@ -1,0 +1,36 @@
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    max_build_duration: 60 # Time in minutes
+    environment:
+      xcode: latest
+      cocoapods: default
+      node: latest
+      vars:
+        # Add environment variables here if needed, for example:
+        # API_KEY: ${{ API_KEY }}
+    scripts:
+      - name: Install dependencies
+        script: |
+          # If you are using CocoaPods, uncomment the line below to install pods
+          # pod install
+          echo "No dependencies to install"
+      - name: Build app
+        script: |
+          xcodebuild -workspace CrimsonFocus.xcworkspace \
+            -scheme CrimsonFocus \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath $CM_BUILD_DIR/CrimsonFocus.xcarchive archive
+      - name: Export IPA
+        script: |
+          xcodebuild -exportArchive \
+            -archivePath $CM_BUILD_DIR/CrimsonFocus.xcarchive \
+            -exportOptionsPlist $CM_EXPORT_PLIST \
+            -exportPath $CM_BUILD_DIR
+    artifacts:
+      - $CM_BUILD_DIR/*.ipa # Ensure the IPA file is saved as an artifact
+    publishing:
+      email:
+        recipients:
+          - mohamedhammad3.142@gmail.com
