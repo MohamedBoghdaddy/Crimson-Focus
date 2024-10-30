@@ -1,4 +1,3 @@
-```markdown
 # 📝 Crimson-Focus - To-Do List App
 
 Crimson-Focus is a to-do list application created to help users stay organized and manage tasks efficiently.
