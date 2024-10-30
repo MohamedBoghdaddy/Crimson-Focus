@@ -1,9 +1,3 @@
-**Crimson-Focus** is a to-do list application developed in **Objective-C**, designed to enhance productivity through a clean and intuitive interface. It includes task creation, editing, and tracking features.
-
----
-
-### README Template
-
 ```markdown
 # 📝 Crimson-Focus - To-Do List App
 
